@@ -1,0 +1,42 @@
+a:link, a:visited {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	color: #adfcff;
+}
+
+#navcontainer #current {
+	color: #adfcff;
+	text-shadow: 0px -1px 3px #2b6568;
+	background: url(../../images/button_over.png) repeat-x;
+}
+
+#navcontainer .currentAncestor {
+	color: #adfcff;
+	text-shadow: 0px -1px 3px #2b6568;
+	background: url(../../images/button_over.png) repeat-x;
+}
+
+#navcontainer a:hover {
+	color: #adfcff;
+	text-shadow: 0px -1px 3px #2b6568;
+	background: url(../../images/button_over.png) repeat-x;
+}
+
+#navcontainer ul ul #current{
+	color: #adfcff;
+	text-shadow: 0px -1px 3px #2b6568;
+}
+
+#navcontainer ul ul .currentAncestor {
+	color: #adfcff;
+	text-shadow: 0px -1px 3px #2b6568;
+	background-image: none;
+}
+
+#navcontainer ul ul ul .currentAncestor {
+	color: #adfcff;
+	text-shadow: 0px -1px 3px #2b6568;
+}

@@ -1,0 +1,17 @@
+#sidebarContainer {
+	float: left;
+}
+
+#container {
+	background: url(../../images/sidebar_left.png) repeat-y #2f2f2f left;
+}
+
+#contentContainer {
+	position: relative;
+	margin-left: 190px;
+	margin-right: 0;
+}
+
+#pageHeader h1, #pageHeader h2 {
+	padding-left: 10px;
+}

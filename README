@@ -1,0 +1,66 @@
+---------------------------------------------------
+	HIVCD:
+	version 0.9beta, 14 December 2012
+---------------------------------------------------
+
+1. Install MAFFT
+HIVCD uses MAFFT to perform multiple sequence alignment. You can modify options
+in the 'align sequences' method of cgi/upload.cgi
+
+2. Setup Database
+HIVCD assumes you have an available database where sequences are stored. In its
+current state, HIVCD accesses sequences from a single table including the
+sequencing date, accession number (a unique identifier for each patient sample),
+and the sequence itself. 
+
+HIVCD will need some customization to connect to and access the database. The
+data source (database server name), user name, and password must be set. These
+variables are set in cgi/upload.cgi and named '$data_source', '$user', and
+'$pass', respectively.
+
+3. HIVCD Password
+The username and password for HIVCD must also be set in login.cgi ('$user'
+and '$pass').
+
+4. Patient data file
+HIVCD depends on a patient data file to begin a run. The file contains the
+accession number, patient name, and other information. HIVCD uses the accession
+number to identify sequences in the database. The other information is not
+essential, but HIVCD currently expects it to be present. This can be modified
+under the 'Extract patient data' section of cgi/upload.cgi.
+
+An example of the formatted file is below. HIVCD expects the run date and run
+number to be on the first line of the file. Each subsequent line represents a
+patient (or control), delimited by '|'. From left to right, each line contains
+the following information: (1) accession number (unique to the patient);
+(2) plate position; (3) patient name; (4) test name; (5) test id; (6) an
+unexplained variable; (7) patient age; (8) patient sex.
+
+<DATE>|SEQID_HIV_<RUN_NUMBER>
+<ACCESSION>|1|Name, Patient|<TEST_NAME>|<TEST_ID>|<UNKNOWN>|<AGE>|<SEX>
+<ACCESSION>|2|Name, Patient|<TEST_NAME>|<TEST_ID>|<UNKNOWN>|<AGE>|<SEX>
+<ACCESSION>|3|Name, Patient|<TEST_NAME>|<TEST_ID>|<UNKNOWN>|<AGE>|<SEX>
+<ACCESSION>|4|Name, Patient|<TEST_NAME>|<TEST_ID>|<UNKNOWN>|<AGE>|<SEX>
+...
+<ACCESSION>|24|Name, Patient|HIV1GENO|<TEST_ID>|<UNKNOWN>|<AGE>|<SEX>
+QC-6541001|12|654 HIV Negative|1009920|55670|UNK|0|M|
+QC-6541002|24|654 HIV Positive|1009920|55670|UNK|0|M|
+
+5. Other relevant info
+Any sequence containing symbols other than 'atgcurykmswbdhvn' are excluded
+from analysis. This is set in cgi/upload.cgi ('$safe_sequence_character').
+
+6. HELP!
+HIVCD was developed to be used at ARUP Laboratories by Mark Ebbert and Shane
+Dooley. Most of the code provided is a simple web interface to make it usable in
+the clinical laboratory and it was not developed with a lot of "defensive
+programming." In other words, it will not handle everything you throw at it. In
+fact, if anything deviates from what has been described, it will likely blow up
+(ok, not really).  I am also not an experience web programmer, so you may well
+find that building your own interface will be much more favorable. All necessary
+details to implement the algorithm are in our paper titled "Application of a new
+informatics tool for contamination screening in the HIV sequencing laboratory".
+
+The provided code is meant to get you started but I have inevitably forgotten
+important information. Please contact Mark at mark.ebbert@aruplab.com for
+assistance if you have any issues.
